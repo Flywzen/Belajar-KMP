@@ -21,9 +21,6 @@ Column, Row, Box, Card, Text, Button, OutlinedButton, Image, Modifier (fillMaxWi
 ![Profile App](screenshots/profile.png)
 
 ## Cara menjalankan
-- **Android**: buka folder `pekan-3/pekan-3` di Android Studio, pilih `androidApp`, Run.
+- **Android**: buka folder `pekan-3` di Android Studio, pilih `androidApp`, Run.
   Atau: `./gradlew :androidApp:assembleDebug`
 - **iOS**: buka `iosApp/iosApp.xcodeproj` di Xcode lalu Run.
-
-> Foto profil sementara memakai drawable bawaan. Untuk memakai foto sendiri, taruh file di
-> `shared/src/commonMain/composeResources/drawable/` lalu ganti `painterResource(...)` di `ProfileHeader`.
