@@ -1,31 +1,29 @@
-This is a Kotlin Multiplatform project targeting Android, iOS.
+# My Profile App — Compose Multiplatform Basics (Pertemuan 3)
 
-* [/iosApp](./iosApp/iosApp) contains an iOS application. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+**Nama:** Muhammad Rafly Yahya Ramadhan  **NIM:** 123140148
+Mata kuliah Pengembangan Aplikasi Mobile (IF25-22017) — ITERA
 
-* [/shared](./shared/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./shared/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./shared/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./shared/src/jvmMain/kotlin)
-    folder is the appropriate location.
+## Fitur
+- Header dengan foto profil bulat, nama, dan NIM
+- Bio singkat
+- List informasi: Email, Phone, Location
+- Tombol untuk menampilkan/menyembunyikan kontak dengan `AnimatedVisibility` (bonus)
 
-### Running the apps
+## Composable reusable (`ui/ProfileComponents.kt`)
+- `ProfileHeader` — foto + nama + NIM
+- `InfoItem` — satu baris ikon + label + nilai
+- `ProfileCard` — card berjudul dengan slot isi
 
-Use the run configurations provided by the run widget in your IDE's toolbar. You can also use these commands and options:
+## Komponen yang dipakai
+Column, Row, Box, Card, Text, Button, OutlinedButton, Image, Modifier (fillMaxWidth, padding, size, clip, background, weight, verticalScroll).
 
-- Android app: `./gradlew :androidApp:assembleDebug`
-- iOS app: open the [/iosApp](./iosApp) directory in Xcode and run it from there.
+## Screenshot
+![Profile App](screenshots/profile.png)
 
-### Running tests
+## Cara menjalankan
+- **Android**: buka folder `pekan-3/pekan-3` di Android Studio, pilih `androidApp`, Run.
+  Atau: `./gradlew :androidApp:assembleDebug`
+- **iOS**: buka `iosApp/iosApp.xcodeproj` di Xcode lalu Run.
 
-Use the run button in your IDE's editor gutter, or run tests using Gradle tasks:
-
-- Android tests: `./gradlew :shared:testAndroidHostTest`
-- iOS tests: `./gradlew :shared:iosSimulatorArm64Test`
-
----
-
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+> Foto profil sementara memakai drawable bawaan. Untuk memakai foto sendiri, taruh file di
+> `shared/src/commonMain/composeResources/drawable/` lalu ganti `painterResource(...)` di `ProfileHeader`.
