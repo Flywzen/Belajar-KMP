@@ -24,9 +24,9 @@ shared/src/commonMain/kotlin/.../statemanagementmvvm/
 ```
 
 ## Screenshot
-| Profile view | Edit form | Dark mode |
-|:---:|:---:|:---:|
-| ![Profile](screenshots/profile.png) | ![Edit](screenshots/edit.png) | ![Dark](screenshots/dark.png) |
+| Profil (dark mode) | Form edit |
+|:---:|:---:|
+| ![Profil dark mode](screenshots/dark.png) | ![Form edit](screenshots/edit.png) |
 
 ## Cara menjalankan
 - **Android**: buka folder `pekan-4` di Android Studio, pilih konfigurasi `androidApp`, Run.
