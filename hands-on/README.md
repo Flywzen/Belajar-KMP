@@ -1,3 +1,13 @@
+## Latihan per pekan
+
+- [P2 — Coroutines dan Flow](handson-pekan-2/README.md)
+- [P3 — Compose Basics](handson-pekan-3/README.md)
+- [P4 — State dan MVVM](handson-pekan-4/README.md)
+
+Buka masing-masing folder sebagai proyek Gradle terpisah. Panduan di bawah berlaku untuk proyek awal dalam folder ini.
+
+---
+
 This is a Kotlin Multiplatform project targeting Android, iOS.
 
 * [/iosApp](./iosApp/iosApp) contains an iOS application. Even if you’re sharing your UI with Compose Multiplatform,
