@@ -1,31 +1,38 @@
-This is a Kotlin Multiplatform project targeting Android, iOS.
+# News Feed Simulator — Kotlin Coroutines & Flow (Pertemuan 2)
 
-* [/iosApp](./iosApp/iosApp) contains an iOS application. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+**Nama:** Muhammad Rafly Yahya Ramadhan  **NIM:** 123140148
+Mata kuliah Pengembangan Aplikasi Mobile (IF25-22017) — ITERA
 
-* [/shared](./shared/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./shared/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./shared/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./shared/src/jvmMain/kotlin)
-    folder is the appropriate location.
+Aplikasi console (JVM) yang mensimulasikan feed berita. Kodenya ada di modul `newsfeed/`.
 
-### Running the apps
+## Fitur → file
+| # | Fitur | File |
+|---|-------|------|
+| 1 | Flow berita baru setiap 2 detik | `NewsFeed.kt` (`newsFlow`) |
+| 2 | Filter berdasarkan kategori | `NewsFeed.kt` (`filterByCategories`) |
+| 3 | Transform ke format tampilan | `NewsModels.kt` (`toDisplayString`) |
+| 4 | StateFlow jumlah berita dibaca | `ReadTracker.kt` |
+| 5 | Ambil detail berita async (`async/await`, `Dispatchers.IO`) | `NewsRepository.kt` |
+| Bonus | `.catch` error handling + unit test | `Main.kt`, `NewsFeedTest.kt` |
 
-Use the run configurations provided by the run widget in your IDE's toolbar. You can also use these commands and options:
+## Cara menjalankan
+Butuh JDK 11+ (disarankan 17).
+```
+./gradlew :newsfeed:run          # Windows: gradlew.bat :newsfeed:run
+```
+Atau buka folder ini di IntelliJ/Android Studio, lalu jalankan `main()` di `Main.kt`.
 
-- Android app: `./gradlew :androidApp:assembleDebug`
-- iOS app: open the [/iosApp](./iosApp) directory in Xcode and run it from there.
+## Menjalankan unit test
+```
+./gradlew :newsfeed:test
+```
 
-### Running tests
-
-Use the run button in your IDE's editor gutter, or run tests using Gradle tasks:
-
-- Android tests: `./gradlew :shared:testAndroidHostTest`
-- iOS tests: `./gradlew :shared:iosSimulatorArm64Test`
-
----
-
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+## Contoh output
+```
+=== News Feed Simulator ===
+Kategori dipantau: Teknologi, Ekonomi, Kesehatan
+[FLOW] Berita masuk: id=2
+📰 [#2] [TEKNOLOGI] Compose Multiplatform rilis fitur terbaru
+   📖 Total berita dibaca: 1
+```
+> Folder `shared/` dan `androidApp/` hanya template bawaan project KMP dan tidak dipakai untuk tugas ini.

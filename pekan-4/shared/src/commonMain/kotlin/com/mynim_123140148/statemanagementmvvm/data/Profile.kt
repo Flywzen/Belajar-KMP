@@ -5,6 +5,8 @@ data class Profile(
     val name: String,
     val nim: String,
     val email: String,
+    val phone: String,
+    val location: String,
     val bio: String
 )
 
@@ -14,6 +16,8 @@ object ProfileRepository {
         name = "Muhammad Rafly Yahya Ramadhan",
         nim = "123140148",
         email = "muhammad.123140148@student.itera.ac.id",
+        phone = "+62 812-3456-7890",
+        location = "Lampung Selatan, Indonesia",
         bio = "Mahasiswa Teknik Informatika ITERA yang sedang belajar Kotlin Multiplatform dan Compose."
     )
 }

@@ -27,20 +27,20 @@ fun App(viewModel: ProfileViewModel = viewModel { ProfileViewModel() }) {
             color = MaterialTheme.colorScheme.background
         ) {
             Box(Modifier.safeContentPadding()) {
-            if (uiState.isEditing) {
-                EditProfileScreen(
-                    initialName = uiState.profile.name,
-                    initialBio = uiState.profile.bio,
-                    onSave = viewModel::saveProfile,
-                    onCancel = viewModel::cancelEditing
-                )
-            } else {
-                ProfileScreen(
-                    uiState = uiState,
-                    onEditClick = viewModel::startEditing,
-                    onDarkModeChange = viewModel::setDarkMode
-                )
-            }
+                if (uiState.isEditing) {
+                    EditProfileScreen(
+                        initialName = uiState.profile.name,
+                        initialBio = uiState.profile.bio,
+                        onSave = viewModel::saveProfile,
+                        onCancel = viewModel::cancelEditing
+                    )
+                } else {
+                    ProfileScreen(
+                        uiState = uiState,
+                        onEditClick = viewModel::startEditing,
+                        onDarkModeChange = viewModel::setDarkMode
+                    )
+                }
             }
         }
     }

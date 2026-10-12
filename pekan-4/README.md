@@ -1,31 +1,39 @@
-This is a Kotlin Multiplatform project targeting Android, iOS.
+# Profile App — State Management & MVVM (Pertemuan 4)
 
-* [/iosApp](./iosApp/iosApp) contains an iOS application. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+**Nama:** Muhammad Rafly Yahya Ramadhan  **NIM:** 123140148
+Mata kuliah Pengembangan Aplikasi Mobile (IF25-22017) — ITERA
 
-* [/shared](./shared/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./shared/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./shared/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./shared/src/jvmMain/kotlin)
-    folder is the appropriate location.
+Pengembangan dari My Profile App (Pertemuan 3) dengan arsitektur MVVM,
+fitur edit profil, dan dark mode toggle. Dibuat dengan Kotlin Multiplatform + Compose Multiplatform (Android & iOS).
 
-### Running the apps
+## Fitur
+- **MVVM**: `ProfileViewModel` mengekspos `StateFlow<ProfileUiState>`.
+- **UI State**: data class `ProfileUiState(profile, isEditing, isDarkMode)` sebagai single source of truth.
+- **Edit Profile**: form nama & bio memakai `LabeledTextField` (stateless, state di-hoist); tombol Save memperbarui ViewModel.
+- **Dark Mode**: `Switch` yang state-nya disimpan di ViewModel, dengan transisi warna halus (`animateColorAsState`).
+- **Composable reusable**: `ProfileHeader`, `InfoItem`, `ProfileCard`, `DarkModeToggle`, `LabeledTextField`.
 
-Use the run configurations provided by the run widget in your IDE's toolbar. You can also use these commands and options:
+## Struktur folder
+```
+shared/src/commonMain/kotlin/.../statemanagementmvvm/
+├── data/        Profile.kt (model + ProfileRepository)
+├── viewmodel/   ProfileUiState.kt, ProfileViewModel.kt
+├── ui/          ProfileScreen, EditProfileScreen, ProfileComponents,
+│                LabeledTextField, AppTheme
+└── App.kt       root composable
+```
 
-- Android app: `./gradlew :androidApp:assembleDebug`
-- iOS app: open the [/iosApp](./iosApp) directory in Xcode and run it from there.
+## Screenshot
+| Profile view | Edit form | Dark mode |
+|:---:|:---:|:---:|
+| ![Profile](screenshots/profile.png) | ![Edit](screenshots/edit.png) | ![Dark](screenshots/dark.png) |
 
-### Running tests
+## Cara menjalankan
+- **Android**: buka folder `pekan-4` di Android Studio, pilih konfigurasi `androidApp`, Run.
+  Atau lewat terminal: `./gradlew :androidApp:assembleDebug`
+- **iOS**: buka `iosApp/iosApp.xcodeproj` di Xcode lalu Run.
 
-Use the run button in your IDE's editor gutter, or run tests using Gradle tasks:
-
-- Android tests: `./gradlew :shared:testAndroidHostTest`
-- iOS tests: `./gradlew :shared:iosSimulatorArm64Test`
-
----
-
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+## Menjalankan test
+```
+./gradlew :shared:testAndroidHostTest
+```
