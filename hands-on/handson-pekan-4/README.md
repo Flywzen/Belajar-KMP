@@ -1,31 +1,15 @@
-This is a Kotlin Multiplatform project targeting Android, iOS.
+# Hands-on Pekan 4 — State dan MVVM
 
-* [/iosApp](./iosApp/iosApp) contains an iOS application. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+Buka folder ini di Android Studio, sync Gradle, lalu jalankan `androidApp`. iOS tetap memakai host app di `iosApp` melalui Xcode pada Mac.
 
-* [/shared](./shared/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./shared/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./shared/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./shared/src/jvmMain/kotlin)
-    folder is the appropriate location.
+Menu `App.kt` menyediakan tiga latihan:
 
-### Running the apps
+1. Counter dengan tombol tambah, kurang, dan reset. Kurang nonaktif saat nilai 0.
+2. Form state hoisting dari repo semula. `LabeledTextField` dan `RegistrationForm` dipindahkan ke `RegistrationForm.kt`; field email, layout, dan preview data dipertahankan.
+3. Todo MVVM dengan ViewModel dan StateFlow: tambah tugas, abaikan input kosong, dan toggle selesai.
 
-Use the run configurations provided by the run widget in your IDE's toolbar. You can also use these commands and options:
+Package, NIM, host Android/iOS, wrapper, serta versi toolchain mengikuti proyek semula. Dependency coroutines ditambahkan karena Todo memakai StateFlow secara langsung.
 
-- Android app: `./gradlew :androidApp:assembleDebug`
-- iOS app: open the [/iosApp](./iosApp) directory in Xcode and run it from there.
+Todo belum memakai penyimpanan permanen. ID berbasis ukuran list berlaku untuk fitur tambah dan toggle yang tersedia di latihan ini.
 
-### Running tests
-
-Use the run button in your IDE's editor gutter, or run tests using Gradle tasks:
-
-- Android tests: `./gradlew :shared:testAndroidHostTest`
-- iOS tests: `./gradlew :shared:iosSimulatorArm64Test`
-
----
-
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+Build Android: `./gradlew :androidApp:assembleDebug` (Windows: `gradlew.bat :androidApp:assembleDebug`).
